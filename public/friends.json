@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Alex Johnson",
+    "picture": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80",
+    "email": "alex.johnson@email.com",
+    "days_since_contact": 18,
+    "status": "overdue",
+    "tags": ["college", "close friend"],
+    "bio": "We met in university computer club and still share coding ideas and weekend trail plans.",
+    "goal": 14,
+    "next_due_date": "2026-04-01"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Miller",
+    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+    "email": "sarah.miller@email.com",
+    "days_since_contact": 10,
+    "status": "almost due",
+    "tags": ["work", "mentor"],
+    "bio": "Former team lead who gives me practical career advice and checks my portfolio updates.",
+    "goal": 12,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 3,
+    "name": "Mike Chen",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    "email": "mike.chen@email.com",
+    "days_since_contact": 6,
+    "status": "on-track",
+    "tags": ["gym", "travel"],
+    "bio": "My regular gym partner and travel buddy; we plan fitness goals and budget trips together.",
+    "goal": 14,
+    "next_due_date": "2026-04-23"
+  },
+  {
+    "id": 4,
+    "name": "Nadia Rahman",
+    "picture": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80",
+    "email": "nadia.rahman@email.com",
+    "days_since_contact": 21,
+    "status": "overdue",
+    "tags": ["school", "book club"],
+    "bio": "Old school friend who now runs a reading circle; we swap book notes and writing prompts.",
+    "goal": 14,
+    "next_due_date": "2026-03-28"
+  },
+  {
+    "id": 5,
+    "name": "Daniel Gomes",
+    "picture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
+    "email": "daniel.gomes@email.com",
+    "days_since_contact": 11,
+    "status": "almost due",
+    "tags": ["freelance", "design"],
+    "bio": "Collaborator from a freelance project who shares UI tips and client communication tricks.",
+    "goal": 12,
+    "next_due_date": "2026-04-17"
+  },
+  {
+    "id": 6,
+    "name": "Priya Das",
+    "picture": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80",
+    "email": "priya.das@email.com",
+    "days_since_contact": 3,
+    "status": "on-track",
+    "tags": ["community", "volunteer"],
+    "bio": "We volunteer together in local events and coordinate schedules for weekend social campaigns.",
+    "goal": 10,
+    "next_due_date": "2026-04-22"
+  },
+  {
+    "id": 7,
+    "name": "Omar Hossain",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+    "email": "omar.hossain@email.com",
+    "days_since_contact": 9,
+    "status": "on-track",
+    "tags": ["startup", "tech talks"],
+    "bio": "Friend from startup networking events; we discuss product ideas and startup case studies.",
+    "goal": 14,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 8,
+    "name": "Emma Wilson",
+    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
+    "email": "emma.wilson@email.com",
+    "days_since_contact": 16,
+    "status": "overdue",
+    "tags": ["music", "creative"],
+    "bio": "Musician friend from online workshops; we motivate each other to finish creative projects.",
+    "goal": 14,
+    "next_due_date": "2026-04-05"
+  }
+]
