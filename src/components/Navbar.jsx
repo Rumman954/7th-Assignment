@@ -11,7 +11,10 @@ export function Navbar() {
   return (
     <header className="navbar-wrap">
       <nav className="container navbar">
-        <div className="logo">KeenKeeper</div>
+        <h1 className="logo" aria-label="KeenKeeper">
+          <span className="logo-keen">Keen</span>
+          <span className="logo-keeper">Keeper</span>
+        </h1>
         <div className="nav-links">
           {links.map((link) => (
             <NavLink
