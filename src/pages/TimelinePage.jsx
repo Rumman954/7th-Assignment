@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import trashIcon from '../assets/trash-icon.png'
 import { useApp } from '../state/useApp.js'
 import { methodIcon, toDate } from '../utils.js'
 
@@ -37,6 +38,7 @@ export function TimelinePage() {
             }}
             disabled={timeline.length === 0}
           >
+            <img src={trashIcon} alt="" className="timeline-trash-icon" aria-hidden="true" />
             Delete All
           </button>
         </div>

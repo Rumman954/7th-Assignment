@@ -342,6 +342,12 @@
   cursor: not-allowed;
 }
 
+.timeline-trash-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
 .timeline-list {
   display: grid;
   gap: 10px;
