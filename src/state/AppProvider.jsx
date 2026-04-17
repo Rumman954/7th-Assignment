@@ -35,8 +35,12 @@ export function AppProvider({ children }) {
     setTimeline((prev) => [entry, ...prev])
   }
 
+  const clearTimeline = () => {
+    setTimeline([])
+  }
+
   const value = useMemo(
-    () => ({ friends, loading, timeline, addTimelineEntry }),
+    () => ({ friends, loading, timeline, addTimelineEntry, clearTimeline }),
     [friends, loading, timeline],
   )
 

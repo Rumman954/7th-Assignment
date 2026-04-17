@@ -307,6 +307,14 @@
   flex-wrap: wrap;
 }
 
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .ghost-btn {
   border: 1px solid #d1d5db;
   background: #fff;
@@ -322,6 +330,16 @@
 .ghost-btn.active {
   border-color: #1f5b48;
   color: #1f5b48;
+}
+
+.ghost-btn.danger {
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.ghost-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .timeline-list {
