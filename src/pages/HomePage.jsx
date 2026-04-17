@@ -57,7 +57,7 @@ function FriendCard({ friend }) {
 }
 
 export function HomePage() {
-  const { friends, timeline } = useApp()
+  const { friends, timeline, loading } = useApp()
 
   return (
     <div className="py-14 md:py-20">
@@ -76,13 +76,22 @@ export function HomePage() {
           <FaPlus /> Add a Friend
         </button>
       </section>
-      <SummaryCards friends={friends} timeline={timeline} />
-      <h2 className="mt-9 mb-3 text-3xl font-bold text-slate-900">Your Friends</h2>
-      <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-        {friends.map((friend) => (
-          <FriendCard key={friend.id} friend={friend} />
-        ))}
-      </section>
+      {loading ? (
+        <section className="mt-10 grid place-items-center gap-2 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-[#1f5b48]" />
+          <p className="m-0 text-slate-500">Loading your friends...</p>
+        </section>
+      ) : (
+        <>
+          <SummaryCards friends={friends} timeline={timeline} />
+          <h2 className="mt-9 mb-3 text-3xl font-bold text-slate-900">Your Friends</h2>
+          <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {friends.map((friend) => (
+              <FriendCard key={friend.id} friend={friend} />
+            ))}
+          </section>
+        </>
+      )}
     </div>
   )
 }
