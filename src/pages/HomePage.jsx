@@ -10,7 +10,7 @@ const statusPriority = {
   'on-track': 2,
 }
 
-function SummaryCards({ friends, timeline }) {
+function SummaryCards({ friends, timeline, isDark }) {
   const overdue = friends.filter((f) => f.status === 'overdue').length
   const almostDue = friends.filter((f) => f.status === 'almost due').length
   const onTrack = friends.filter((f) => f.status === 'on-track').length
@@ -27,30 +27,36 @@ function SummaryCards({ friends, timeline }) {
       {items.map((item) => (
         <div
           key={item.title}
-          className="rounded-xl border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"
+          className={`rounded-xl border px-4 py-5 text-center shadow-sm ${
+            isDark ? 'border-slate-700 bg-slate-900' : 'border-slate-200 bg-white'
+          }`}
         >
           <h3 className="m-0 text-3xl leading-none font-bold text-[#1f5b48]">{item.value}</h3>
-          <p className="mt-2 text-sm text-slate-500">{item.title}</p>
+          <p className={`mt-2 text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{item.title}</p>
         </div>
       ))}
     </section>
   )
 }
 
-function FriendCard({ friend }) {
+function FriendCard({ friend, isDark }) {
   return (
     <Link
       to={`/friend/${friend.id}`}
-      className="flex flex-col items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-4 text-center text-slate-900 shadow-sm transition hover:shadow"
+      className={`flex flex-col items-center gap-2.5 rounded-xl border px-3 py-4 text-center shadow-sm transition hover:shadow ${
+        isDark ? 'border-slate-700 bg-slate-900 text-slate-100' : 'border-slate-200 bg-white text-slate-900'
+      }`}
     >
       <img src={friend.picture} alt={friend.name} className="h-16 w-16 rounded-full object-cover" />
       <h4 className="m-0 text-lg font-semibold">{friend.name}</h4>
-      <p className="m-0 text-xs text-slate-500">{friend.days_since_contact}d ago</p>
+      <p className={`m-0 text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{friend.days_since_contact}d ago</p>
       <div className="flex flex-wrap justify-center gap-1.5">
         {friend.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 uppercase"
+            className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${
+              isDark ? 'bg-emerald-900/60 text-emerald-200' : 'bg-emerald-50 text-emerald-700'
+            }`}
           >
             {tag}
           </span>
@@ -102,7 +108,7 @@ export function HomePage() {
         </section>
       ) : (
         <>
-          <SummaryCards friends={friends} timeline={timeline} />
+          <SummaryCards friends={friends} timeline={timeline} isDark={isDark} />
           <h2 className={`mt-9 mb-3 text-3xl font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
             Your Friends
           </h2>
@@ -116,7 +122,7 @@ export function HomePage() {
           ) : (
             <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
               {sortedFriends.map((friend) => (
-                <FriendCard key={friend.id} friend={friend} />
+                <FriendCard key={friend.id} friend={friend} isDark={isDark} />
               ))}
             </section>
           )}
