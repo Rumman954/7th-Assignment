@@ -1,7 +1,14 @@
+import { useMemo } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useApp } from '../state/useApp.js'
 import { statusClass } from '../utils.js'
+
+const statusPriority = {
+  overdue: 0,
+  'almost due': 1,
+  'on-track': 2,
+}
 
 function SummaryCards({ friends, timeline }) {
   const overdue = friends.filter((f) => f.status === 'overdue').length
@@ -58,7 +65,15 @@ function FriendCard({ friend }) {
 
 export function HomePage() {
   const { friends, timeline, loading } = useApp()
-
+  const sortedFriends = useMemo(() => {
+    return [...friends].sort((a, b) => {
+      const aPriority = statusPriority[a.status] ?? Number.MAX_SAFE_INTEGER
+      const bPriority = statusPriority[b.status] ?? Number.MAX_SAFE_INTEGER
+      const priorityDiff = aPriority - bPriority
+      if (priorityDiff !== 0) return priorityDiff
+      return b.days_since_contact - a.days_since_contact
+    })
+  }, [friends])
   return (
     <div className="py-14 md:py-20">
       <section className="mx-auto max-w-5xl px-4 text-center">
@@ -92,7 +107,7 @@ export function HomePage() {
             </section>
           ) : (
             <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-              {friends.map((friend) => (
+              {sortedFriends.map((friend) => (
                 <FriendCard key={friend.id} friend={friend} />
               ))}
             </section>
