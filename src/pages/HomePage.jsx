@@ -85,11 +85,18 @@ export function HomePage() {
         <>
           <SummaryCards friends={friends} timeline={timeline} />
           <h2 className="mt-9 mb-3 text-3xl font-bold text-slate-900">Your Friends</h2>
-          <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-            {friends.map((friend) => (
-              <FriendCard key={friend.id} friend={friend} />
-            ))}
-          </section>
+          {friends.length === 0 ? (
+            <section className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500">
+              No friends found yet. Click <span className="font-semibold text-[#1f5b48]">Add a Friend</span> to
+              get started.
+            </section>
+          ) : (
+            <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+              {friends.map((friend) => (
+                <FriendCard key={friend.id} friend={friend} />
+              ))}
+            </section>
+          )}
         </>
       )}
     </div>
