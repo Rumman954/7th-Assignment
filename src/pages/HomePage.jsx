@@ -1,5 +1,7 @@
 import { FaPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { useApp } from '../state/useApp.js'
+import { statusClass } from '../utils.js'
 
 function SummaryCards({ friends, timeline }) {
   const overdue = friends.filter((f) => f.status === 'overdue').length
@@ -28,6 +30,32 @@ function SummaryCards({ friends, timeline }) {
   )
 }
 
+function FriendCard({ friend }) {
+  return (
+    <Link
+      to={`/friend/${friend.id}`}
+      className="flex flex-col items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-4 text-center text-slate-900 shadow-sm transition hover:shadow"
+    >
+      <img src={friend.picture} alt={friend.name} className="h-16 w-16 rounded-full object-cover" />
+      <h4 className="m-0 text-lg font-semibold">{friend.name}</h4>
+      <p className="m-0 text-xs text-slate-500">{friend.days_since_contact}d ago</p>
+      <div className="flex flex-wrap justify-center gap-1.5">
+        {friend.tags.map((tag) => (
+          <span
+            key={tag}
+            className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 uppercase"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold text-white ${statusClass[friend.status]}`}>
+        {friend.status}
+      </span>
+    </Link>
+  )
+}
+
 export function HomePage() {
   const { friends, timeline } = useApp()
 
@@ -49,6 +77,12 @@ export function HomePage() {
         </button>
       </section>
       <SummaryCards friends={friends} timeline={timeline} />
+      <h2 className="mt-9 mb-3 text-3xl font-bold text-slate-900">Your Friends</h2>
+      <section className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+        {friends.map((friend) => (
+          <FriendCard key={friend.id} friend={friend} />
+        ))}
+      </section>
     </div>
   )
 }
