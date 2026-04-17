@@ -2,10 +2,15 @@ import { useEffect, useMemo, useState } from 'react'
 import { AppContext } from './AppContext.js'
 
 const TIMELINE_KEY = 'keenkeeper-timeline'
+const THEME_KEY = 'keenkeeper-theme'
 
 export function AppProvider({ children }) {
   const [friends, setFriends] = useState([])
   const [loading, setLoading] = useState(true)
+  const [isDark, setIsDark] = useState(() => {
+    const stored = localStorage.getItem(THEME_KEY)
+    return stored === 'dark'
+  })
   const [timeline, setTimeline] = useState(() => {
     const stored = localStorage.getItem(TIMELINE_KEY)
     return stored ? JSON.parse(stored) : []
@@ -31,6 +36,11 @@ export function AppProvider({ children }) {
     localStorage.setItem(TIMELINE_KEY, JSON.stringify(timeline))
   }, [timeline])
 
+  useEffect(() => {
+    localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light')
+    document.body.classList.toggle('dark-mode', isDark)
+  }, [isDark])
+
   const addTimelineEntry = (entry) => {
     setTimeline((prev) => [entry, ...prev])
   }
@@ -39,9 +49,13 @@ export function AppProvider({ children }) {
     setTimeline([])
   }
 
+  const toggleTheme = () => {
+    setIsDark((prev) => !prev)
+  }
+
   const value = useMemo(
-    () => ({ friends, loading, timeline, addTimelineEntry, clearTimeline }),
-    [friends, loading, timeline],
+    () => ({ friends, loading, timeline, addTimelineEntry, clearTimeline, isDark, toggleTheme }),
+    [friends, loading, timeline, isDark],
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

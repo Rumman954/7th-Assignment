@@ -4,6 +4,11 @@
   flex-direction: column;
 }
 
+body.dark-mode {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
 .container {
   width: min(1160px, 92%);
   margin: 0 auto;
@@ -42,6 +47,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.theme-toggle-btn {
+  margin-left: 4px;
 }
 
 .nav-link {
@@ -346,6 +355,65 @@
   width: 14px;
   height: 14px;
   object-fit: contain;
+}
+
+body.dark-mode .navbar-wrap {
+  background: #0b1220;
+  border-bottom-color: #1f2937;
+}
+
+body.dark-mode .logo-keen {
+  color: #f1f5f9;
+}
+
+body.dark-mode .nav-link {
+  color: #94a3b8;
+}
+
+body.dark-mode .nav-link-active {
+  background: #14532d;
+  color: #f8fafc;
+}
+
+body.dark-mode .card {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: none;
+}
+
+body.dark-mode .summary-card p,
+body.dark-mode .friend-card p,
+body.dark-mode .timeline-item p,
+body.dark-mode .stats-subtitle,
+body.dark-mode .friend-bio,
+body.dark-mode .friend-email {
+  color: #94a3b8;
+}
+
+body.dark-mode .timeline-head h1,
+body.dark-mode .timeline-item h4,
+body.dark-mode .stats-title,
+body.dark-mode .friend-card,
+body.dark-mode .friend-profile h2,
+body.dark-mode .relationship-head h3,
+body.dark-mode .checkin-card h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .ghost-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+body.dark-mode .ghost-btn.active {
+  border-color: #22c55e;
+  color: #86efac;
+}
+
+body.dark-mode .tag {
+  background: #134e4a;
+  color: #ccfbf1;
 }
 
 .timeline-list {

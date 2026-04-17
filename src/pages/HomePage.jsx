@@ -64,7 +64,7 @@ function FriendCard({ friend }) {
 }
 
 export function HomePage() {
-  const { friends, timeline, loading } = useApp()
+  const { friends, timeline, loading, isDark } = useApp()
   const sortedFriends = useMemo(() => {
     return [...friends].sort((a, b) => {
       const aPriority = statusPriority[a.status] ?? Number.MAX_SAFE_INTEGER
@@ -77,10 +77,14 @@ export function HomePage() {
   return (
     <div className="py-14 md:py-20">
       <section className="mx-auto max-w-5xl px-4 text-center">
-        <h1 className="m-0 text-5xl font-extrabold leading-[1.05] tracking-tight text-slate-900 md:text-6xl">
+        <h1
+          className={`m-0 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl ${isDark ? 'text-slate-100' : 'text-slate-900'}`}
+        >
           Friends to keep close in your life
         </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base text-slate-500 md:text-lg">
+        <p
+          className={`mx-auto mt-4 max-w-3xl text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
+        >
           Your personal shelf of meaningful connections. Browse, tend, and nurture the
           relationships that matter most.
         </p>
@@ -99,9 +103,13 @@ export function HomePage() {
       ) : (
         <>
           <SummaryCards friends={friends} timeline={timeline} />
-          <h2 className="mt-9 mb-3 text-3xl font-bold text-slate-900">Your Friends</h2>
+          <h2 className={`mt-9 mb-3 text-3xl font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+            Your Friends
+          </h2>
           {friends.length === 0 ? (
-            <section className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500">
+            <section
+              className={`rounded-xl border border-dashed p-8 text-center ${isDark ? 'border-slate-700 bg-slate-900 text-slate-400' : 'border-slate-300 bg-white text-slate-500'}`}
+            >
               No friends found yet. Click <span className="font-semibold text-[#1f5b48]">Add a Friend</span> to
               get started.
             </section>

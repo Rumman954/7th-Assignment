@@ -1,5 +1,6 @@
-import { FaChartPie, FaHome, FaRegClock } from 'react-icons/fa'
+import { FaChartPie, FaHome, FaMoon, FaRegClock, FaSun } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+import { useApp } from '../state/useApp.js'
 
 const links = [
   { to: '/', label: 'Home', icon: <FaHome /> },
@@ -8,6 +9,8 @@ const links = [
 ]
 
 export function Navbar() {
+  const { isDark, toggleTheme } = useApp()
+
   return (
     <header className="navbar-wrap">
       <nav className="container navbar">
@@ -28,6 +31,10 @@ export function Navbar() {
               <span>{link.label}</span>
             </NavLink>
           ))}
+          <button type="button" className="ghost-btn theme-toggle-btn" onClick={toggleTheme}>
+            {isDark ? <FaSun /> : <FaMoon />}
+            <span>{isDark ? 'Light' : 'Dark'}</span>
+          </button>
         </div>
       </nav>
     </header>
